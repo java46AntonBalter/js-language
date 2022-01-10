@@ -76,7 +76,7 @@ fun(5)(10,3);
 function fun(x){
     if(x==5){
         return function add(y,z){
-            console.log(y + ' + ' + z + '=' + (y+z));
+            console.log(y + ' + ' + z + ' = ' + (y+z));
         }
     }
 }
