@@ -31,9 +31,11 @@
 // //"+" unary is the simplest way for the explicit conversion of a string to a number
 // console.log(`+"12" + 12 = ${+"12" + 12}`)
 // // Hw #definition
-// //1. using only two letters "a", "s" print out word ananas case insensitive AnaNAS, 
-// //2. write function calculate that can perform any arithmetic operation on two numbers (*, /, +, -);
-// //3. write any example for running the following expression fun(5)(10, 3)
+ 
+
+
+
+// //1. using only two letters "a", "s" print out word ananas case insensitive AnaNAS,
 
 console.log('a' + String.fromCharCode(78) + 'a' + String.fromCharCode(78) + 'a' + 'S');
 
@@ -45,7 +47,9 @@ console.log('  a       a   s   s s   a       a   s   s s   a       a          s'
 console.log(' a         a  s    ss  a         a  s    ss  a         a         s');
 console.log('a           a s     s a           a s     s a           a sssssss');
 
-calculator(2,2,'/');
+// //2. write function calculate that can perform any arithmetic operation on two numbers (*, /, +, -);
+
+calculator(2,2,'*');
 
 function calculator(a,b,action){
     if(action == '+'){
@@ -60,14 +64,19 @@ function calculator(a,b,action){
     else if(action == '/'){
         console.log(a + ' / ' + b + ' = ' + (a/b));
     }
+    else{
+        console.log('ERROR:wrong action')
+    }
 }
+
+// //3. write any example for running the following expression fun(5)(10, 3)
 
 fun(5)(10,3);
 
 function fun(x){
     if(x==5){
         return function add(y,z){
-            console.log(y+z);
+            console.log(y + ' + ' + z + '=' + (y+z));
         }
     }
 }
