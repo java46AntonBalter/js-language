@@ -36,8 +36,10 @@
 
 
 // //1. using only two letters "a", "s" print out word ananas case insensitive AnaNAS,
+let a = 78;
+let s = 110;
 
-console.log('a' + String.fromCharCode(78) + 'a' + String.fromCharCode(78) + 'a' + 'S');
+console.log('a' + String.fromCharCode(s) + 'a' + String.fromCharCode(a) + 'a' + 'S');
 
 console.log('      a       s     s       a       s     s       a        sssssss');
 console.log('     a a      ss    s      a a      ss    s      a a      s');
