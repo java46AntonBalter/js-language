@@ -28,7 +28,7 @@ function stringProcessing(str) {
 //         //base from 2 to 10
 //         let res="";
 //         do {
-//                 const digit = Math.trunc(num % base);
+//                 const digit = num % base;
 //                 const symb = getSymbol(digit);
 //                 res = symb + res;
 //                 num = Math.trunc(num / base);
