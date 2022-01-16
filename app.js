@@ -15,6 +15,5 @@ function encode(num, str) {
     return res;
 }
 
-
 const codingString = ".-"
 console.log(encode(5, codingString));
