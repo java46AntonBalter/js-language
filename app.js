@@ -1,8 +1,9 @@
 /************ HW #12 ********/
 /**** Comparator ****/
 const arHw = [13, 28, 4, 15, 25, -10, 40, 17, 27];
-arHw.sort((a, b) => (a % 2) - (b % 2));
-arHw.sort(function(a,b){
+const arHwsorted = arHw.slice();
+arHwsorted.sort((a, b) => (a % 2) - (b % 2));
+arHwsorted.sort(function(a,b){
     if((a % 2 == 0) && (b % 2 == 0)){
         return a-b;
     }
@@ -10,7 +11,8 @@ arHw.sort(function(a,b){
         return b-a;
     }
 })
-console.log(arHw.toString());
+console.log(`Unsorted: [${arHw.toString()}]`);
+console.log(`Sorted: [${arHwsorted.toString()}]`);
 /******************************************* */
 
 function matrixTransp(matrix){
