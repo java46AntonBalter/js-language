@@ -2,13 +2,18 @@
 /**** Comparator ****/
 const arHw = [13, 28, 4, 15, 25, -10, 40, 17, 27];
 const arHwsorted = arHw.slice();
-arHwsorted.sort((a, b) => (a % 2) - (b % 2));
 arHwsorted.sort(function(a,b){
     if((a % 2 == 0) && (b % 2 == 0)){
         return a-b;
     }
-    else if((a % 2 != 0) && (b % 2 != 0)){
+    if((a % 2 != 0) && (b % 2 != 0)){
         return b-a;
+    }
+    if((a % 2 == 0) && (b % 2 != 0)){
+        return -1;
+    }
+    if((a % 2 != 0) && (b % 2 == 0)){
+        return 1;
     }
 })
 console.log(`Unsorted: [${arHw.toString()}]`);
@@ -24,7 +29,7 @@ function matrixTransp(matrix){
     }
     for(let i = 0; i < matrix.length; i++) {
         for (let j = 0; j < matrix[i].length; j++) {
-            newMatrix[j].splice(200, 0, matrix[i][j])
+            newMatrix[j].push(matrix[i][j]);
         }
     }
     console.log(newMatrix);
