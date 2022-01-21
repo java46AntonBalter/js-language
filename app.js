@@ -53,18 +53,43 @@ function displayMatrix(matrix) {
 //displayMatrix(matrix1);
 displayMatrix(matrix2);
 /******************HW #12 definition */
-const arHw = [13, 28, 4, 15, 25, -10, 40, 17,27];
+//const arHw = [13, 28, 4, 15, 25, -10, 40, 17,27];
 //expected [-10, 4, 28, 40, 27, 25, 17, 15, 13]
 //task: write a comparator (a comparator returns < 0 if first less than second, >0 
 // if first greater than second, ==0 if first equals second)
 /************************************************************** */
 /**************************************HW 12 definition */
 // write function 
-function matrixTransp(matrix) {
+//function matrixTransp(matrix) {
         //TODO
         //returns matrix with columns that are rows of the source matrix and 
         //rows that are columns of the source matrix
         //example: source matrix [[1,2], [3,4], [5,6]]
         // result matrix [[1, 3, 5], [2, 4, 6]]
-}
+//}
 
+/************************************HW# 12 Solution task 1*/
+const arHw = [13, 28, 4, 15, 25, -10, 40, 17,27];
+//expected [-10, 4, 28, 40, 27, 25, 17, 15, 13]
+const comparator = (n1, n2) => {
+        let res = n1 % 2 - n2 % 2;
+        if (res == 0) {
+                res = n1 % 2 == 0 ? n1 - n2 : n2 - n1; 
+        }
+        return res;
+}
+arHw.sort(comparator);
+console.log(arHw);
+/******************************************************HW #12 solution task2 */
+function matrixTransp(matrix) {
+        const res = [];
+
+        for (let i = 0; i < matrix[0].length; i++) {
+                res.push([]);
+                for (let j = 0; j < matrix.length; j++) {
+                        res[i].push(matrix[j][i]);
+                }
+        }
+        return res;
+}
+displayMatrix(matrixTransp([[1,2], [3,4], [5,6]]));
