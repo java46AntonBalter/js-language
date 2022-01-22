@@ -1,6 +1,5 @@
-const ar = [-10, 50, -12, 80, 40];
-ar.push(70);
-const ar2 = []  
+const ar = [-10, 50, -12, 80, 40, 70];
+const ar2 = [];  
 const perc = 75;  
     
 function myForEach (ar, callback) {
