@@ -27,7 +27,7 @@ function myMap(ar, callback) {
             console.log(`${perc}% of the ${i + 1}th element of the array [${a}] is: ${n * (perc/100)}`);
         }
     })
-    console.log(`[${ar2}]`);
+    console.log(`The resulting new array is ~*~<[${ar2}]>~*~`);
 }
 
 myMap(ar, (n, i, a) => {ar2[i] = n * (perc/100)});
