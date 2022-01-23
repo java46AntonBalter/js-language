@@ -2,17 +2,17 @@ const ar = [-10, 50, -12, 80, 40, 70];
 const ar2 = [];  
 const perc = 75;  
     
-function myForEach (ar, callback) {
-    for(i = 0; i < ar.length; i++) {
-        callback(ar[i], i, ar);
+function myForEach (arr, callback) {
+    for(i = 0; i < arr.length; i++) {
+        callback(arr[i], i, arr);
     }
 }
 
-function myMap(ar, callback) {
-    for(i = 0; i < ar.length; i++) {
-        callback(ar[i], i, ar);
+function myMap(arr, callback) {
+    for(i = 0; i < arr.length; i++) {
+        callback(arr[i], i, arr);
     }
-    myForEach(ar, (n, i, a) => {
+    myForEach(arr, (n, i, a) => {
         if (i == 0) {
             console.log(`${perc}% of the ${i + 1}st element of the array [${a}] is: ${n * (perc/100)}`);
         }
@@ -30,10 +30,3 @@ function myMap(ar, callback) {
 }
 
 myMap(ar, (n, i, a) => {ar2[i] = n * (perc/100)});
-
-
-
-
-
-
-
