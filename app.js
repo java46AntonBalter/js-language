@@ -89,7 +89,8 @@ console.log(res);
 res = ar20.reduce((res, cur) => res + cur);
 /******************************************HW 14 definition task1 */
 //TODO write myReduce(array, callback, initialResult) based on myForEach
-//callback - function with three possible parameters: current element, current index, reference to array
-// if the user call doesn't contain a seond argument, then the first elemnt of the array will be
-//considered as initial result (in this case iterating begins from the second element of the array)
+//callback - function with four  possible parameters: accumulated result,
+// current element, current index, reference to array
+// if the user call doesn't contain initialResult, then the first element of the array will be
+//considered as initial result (in that case iterating begins from the second element of the array)
 /********************************************************************* */
