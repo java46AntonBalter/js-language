@@ -59,8 +59,11 @@ const persons = [
 
 
 const res = persons.filter(n => n.address.city == "Rehovot");
-console.log(`People living in Rehovot are:`);
+console.log(`
+People living in Rehovot are:`);
 console.log(res);
-
+console.log(`
+Sorting:`);
 persons.sort((a, b) => a.address.city != "Rehovot"? -1 : 1);
 console.log(persons);
+
