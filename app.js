@@ -1,14 +1,24 @@
 /*****************Arrays */
 const ar = [-10, 50, -12, 80, 40, 70];
 
-const ar2 = myFilter(ar, (n, i ,a) => i % 2 == 0 ? n + a.length: n - a.length);
+const ar2 = myFilter(ar, (n, i ,a) => {
+    if(i % 2 != 0 && n > a.length) {
+        return n;
+    }
+});
 console.log(ar2);
+let ar3 = ar.filter((n, i ,a) => {
+    if(i % 2 != 0 && n > a.length) {
+        return n;
+    }
+});
+console.log(ar3)
 
 
-const ar3 = myReduce(ar, (n, i, a) => (n >= i) && (n >= a.length) ? n : 0, 0);
-console.log(ar3);
-const ar4 = myReduce(ar, (n, i, a) => (n >= i) && (n >= a.length) ? n : 0);
+const ar4 = myReduce(ar, (n, i, a) => (n >= i) && (n >= a.length) ? n : 0, 0);
 console.log(ar4);
+const ar5 = myReduce(ar, (n, i, a) => (n >= i) && (n >= a.length) ? n : 0);
+console.log(ar5);
 
 function myForEach(array, callback) {
     for (let i = 0; i < array.length; i++) {
@@ -18,7 +28,9 @@ function myForEach(array, callback) {
 function myFilter(array,callback) {
     const res = [];
     function forEachCall(n, i, a) {
-        res.push(callback(n, i, a));
+        if(callback(n, i, a) !== undefined){
+                res.push(callback(n, i, a));
+        }    
     }
     myForEach(array, forEachCall);
     return res;
