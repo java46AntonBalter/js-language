@@ -37,7 +37,7 @@ function myReduce(array, callback, initialResult){
     if(initialResult !== undefined){
         let res = initialResult;
         function forEachCall(n, i, a) {
-            res = res + callback(res, n, i, a);
+            res = callback(res, n, i, a);
         }
         myForEach(array, forEachCall);
         return res;
@@ -46,7 +46,7 @@ function myReduce(array, callback, initialResult){
         let res = array[0];
         array.splice(0, 1);
         function forEachCall(n, i, a) {
-            res = res + callback(res, n, i, a);
+            res = callback(res, n, i, a);
         }
         myForEach(array, forEachCall);
         return res;
