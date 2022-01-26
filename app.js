@@ -34,7 +34,7 @@ function myFilter(array,callback) {
     return res;
 }
 function myReduce(array, callback, initialResult){
-    if(initialResult != undefined){
+    if(initialResult !== undefined){
         let res = initialResult;
         function forEachCall(n, i, a) {
             res = res + callback(res, n, i, a);
