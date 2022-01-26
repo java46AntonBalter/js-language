@@ -65,6 +65,7 @@ const persons = [
     createPerson(123, "Vasya", createAddress("Rehovot", "Parshani")),
     createPerson(124, "Olya", createAddress("Rehovot", "Pr. Plaut")),
     createPerson(125, "Tolya", createAddress("Tel-Aviv", "Dizengoff")),
+    createPerson(126, "Sarah", createAddress("Lod", "Sokolov"))
 ]
 
 
@@ -77,3 +78,11 @@ Sorting:`);
 persons.sort((a, b) => a.address.city != "Rehovot"? -1 : 1);
 console.log(persons);
 
+/*****************Extra 1 ******/
+let res3 = persons.filter((n,i,a) => n.address.city == "Rehovot").reduce((rv,p) => (rv.id > p.id)? rv.name : p.name);
+console.log(res3);
+
+/**********Extra 2 */
+const times = {};
+persons.forEach((n, _, arr) => times[n.address.city] = arr.filter((p) => p.address.city == n.address.city).length);
+console.log(times);
