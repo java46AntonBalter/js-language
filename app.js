@@ -25,32 +25,17 @@ function myForEach(array, callback) {
 }
 function myFilter(array,callback) {
     const res = [];
-    function forEachCall(n, i, a) {
-        if(callback(n, i, a) !== undefined){
-                res.push(callback(n, i, a));
-        }    
-    }
-    myForEach(array, forEachCall);
+    myForEach(array, (n, i, a) => callback(n, i, a) && res.push(n));
     return res;
 }
 function myReduce(array, callback, initialResult){
-    if(initialResult !== undefined){
-        let res = initialResult;
-        function forEachCall(n, i, a) {
-            res = callback(res, n, i, a);
-        }
-        myForEach(array, forEachCall);
-        return res;
+    if (initialResult === undefined) {
+        initial = array[0];
+        array = array.slice(1);
     }
-    else{
-        let res = array[0];
-        array.splice(0, 1);
-        function forEachCall(n, i, a) {
-            res = callback(res, n, i, a);
-        }
-        myForEach(array, forEachCall);
-        return res;
-    }
+    let res = initialResult;
+    myForEach(array,(n, i, a) => res = callback(res, n, i, a));
+    return res;
 }
 
 /******************Objects */
@@ -79,10 +64,9 @@ persons.sort((a, b) => a.address.city != "Rehovot"? -1 : 1);
 console.log(persons);
 
 /*****************Extra 1 ******/
-let res3 = persons.filter((n,i,a) => n.address.city == "Rehovot").reduce((rv,p) => (rv.id > p.id)? rv.name : p.name);
+let res3 = persons.filter(n => n.address.city == "Rehovot").reduce((rv,p) => (rv.id > p.id)? rv.name : p.name);
 console.log(res3);
 
 /**********Extra 2 */
-const times = {};
-persons.forEach((n, _, arr) => times[n.address.city] = arr.filter((p) => p.address.city == n.address.city).length);
-console.log(times);
+const res4 = persons.map(n => n.address.city).reduce((acc, curr) => (acc[curr] = (acc[curr] || 0) + 1, acc), {});
+console.log(res4);
