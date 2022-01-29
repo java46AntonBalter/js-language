@@ -26,8 +26,7 @@ function countBy(array, callbackFun) {
 // const statistics = countBy(arr, n => n.length)
 // console.log(statistics);
 
-const arr = [{age: 25, id: 123, name: 'Vasya'},{age: 50, id: 123, name: 'Vasya'},
-{age: 25, id: 123, name: 'Vasya'},{age: 70, id: 123, name: 'Vasya'}]
+const arr = [{age: 25, id: 123, name: 'Vasya'}, {age: 50, id: 123, name: 'Vasya'}, {age: 25, id: 123, name: 'Vasya'}, {age: 70, id: 123, name: 'Vasya'}]
 const statistics = countBy(arr, n => n.age)
 console.log(statistics);
 
