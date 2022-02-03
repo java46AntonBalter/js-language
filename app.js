@@ -28,7 +28,7 @@ function MyArray(value){
     this.value = value;
 }
 MyArray.prototype.get = function(i) {
-    return this.accArray[i]? this.accArray[i] : this.value;
+    return this.accArray[i] ?? this.value;
 }
 MyArray.prototype.set = function(i,v) {
     this.accArray[i] = v;
@@ -45,4 +45,6 @@ console.log(myArray1.get(100)) //displayed out 500
 myArray1.setValue(300);
 console.log(myArray1.get(100)) //displayed out 300
 console.log(myArray1.get(200)) //displayed out 300
+myArray1.set(100, 0);
+console.log(myArray1.get(100)) //displayed out 300
 
