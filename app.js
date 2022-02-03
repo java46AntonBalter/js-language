@@ -35,7 +35,7 @@ MyArray.prototype.set = function(i,v) {
 }
 MyArray.prototype.setValue = function (v) {
     this.value = v;
-    this.accArray = this.accArray.map(n => n = v);
+    this.accArray = [];
 }
 const myArray1 = new MyArray(10);
 console.log(myArray1.get(100));
