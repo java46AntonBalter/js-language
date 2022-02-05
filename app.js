@@ -15,8 +15,7 @@ class Person {
             return `id: ${this.#id}; name: ${this.#name};`
     }
 }
-const person = new Person(123, 'Moshe');
-console.log(`person is ${person}`)
+
 class Employee extends Person {
     #salary;
     constructor(id, name, salary) {
@@ -30,10 +29,7 @@ class Employee extends Person {
             return super.toString() + ` salary: ${this.computeSalary()}`
     }
 }
-const person2 = new Employee(124, "Sara", 5000);
-console.log(`person2 is ${person2}`)
-console.log(typeof(person2)) // just object
-console.log(person2.constructor.name) // only this way JS allow getting constructor name
+
 class Child extends Person {
     #kindergarten
     constructor(id, name, kindergarten) {
@@ -47,8 +43,6 @@ class Child extends Person {
             return `${super.toString()} kindergarten: ${this.#kindergarten}`
     }
 }
-const person3 = new Child(125, 'Yakob', 'Shalom');
-console.log(`person3 is ${person3}`)
 
 class WageEmployee extends Employee {
     #hours
@@ -64,28 +58,29 @@ class WageEmployee extends Employee {
     
 
 }
-const person4 = new WageEmployee(126, 'Asaf', 1000, 10, 100);
-console.log(`person4 is ${person4}`)
-/**************************************************************HW #17 definition */
+
+/**************************************************************HW #17 solution */
 const persons = [
     new Child(100, 'Olya', 'Shalom'),
-    new Child(101, 'Serega', "Boker"),
+    new Child(101, 'Serega', 'Boker'),
     new Child(102, 'Kolya', 'Shalom'),
     new Employee(103, 'Vasya', 1000),
     new WageEmployee(104, 'Tolya', 1000, 10, 100)
 ]
-function countOfPersonType(persons, type) {
-    //return count of persons of the given type
-    //Example:
-    //countOfPersonType(persons, 'WageEmployee') ---> 1
+function countOfPersonType(array, type) {
+    return array.filter(n => n.constructor.name === type).length;
 }
-function computeSalaryBudget(persons) {
-    //returns total salary of all employee objects in the given array
-    //Example:
-    //computeSalaryBudget(persons) ---> 3000
+const res = countOfPersonType(persons, 'WageEmployee');
+console.log(res);
+
+function computeSalaryBudget(array) {
+    return array.reduce((acc, n) => acc += n.computeSalary ? n.computeSalary() : 0, 0);
 }
-function countChildrenGindergarten(persons, kindergarten) {
-    //returns number of children in the given kindergarten
-    //Example:
-    //countChildrenGindergarten(persons, 'Shalom') ---> 2
+const res1 = computeSalaryBudget(persons);
+console.log(res1);
+
+function countChildrenKindergarten(array, kindergarten) {
+    return array.filter(n => n.getKindergarten && n.getKindergarten() === kindergarten).length;
 }
+const res2 = countChildrenKindergarten(persons, 'Shalom');
+console.log(res2)
