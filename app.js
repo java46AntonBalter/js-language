@@ -1,8 +1,8 @@
 function getRandomNumber(min, max) {
-
-       let res = min > max? ([min, max] = [max, min]) && Math.floor(Math.random() * (max - min + 1) ) + min : Math.floor(Math.random() * (max - min + 1) ) + min;  
+       let res = min > max? 
+       ([min, max] = [max, min]) && Math.floor(Math.random() * (max - min + 1) ) + min : 
+       Math.floor(Math.random() * (max - min + 1) ) + min;  
        return res;
-
 //TODO
 //min -minimal value
 //max - max value
@@ -12,6 +12,7 @@ function getRandomNumber(min, max) {
 }
 res = getRandomNumber(999, 0);
 console.log(res);
+
 function concatinate(prefix) {
         const res = '' + prefix;
         return function (m) {return res + m};
