@@ -1,91 +1,33 @@
-class Person {
-    #id;
-    #name;
-    constructor(id, name) {
-            this.#id = id;
-            this.#name = name
-    }
-    getId() {
-            return this.#id;
-    }
-    getName() {
-            return this.#name
-    }
-    toString() {
-            return `id: ${this.#id}; name: ${this.#name};`
-    }
+const point = {
+        x:3,
+        y:4
+};
+function displayPointInSpace(z, t) {
+        //"this" - reference to any object having properties x and y
+        console.log(`x: ${this.x}, y: ${this.y}, z: ${z}, t: ${t}`);
 }
-const person = new Person(123, 'Moshe');
-console.log(`person is ${person}`)
-class Employee extends Person {
-    #salary;
-    constructor(id, name, salary) {
-            super(id, name); //call the constructor of the class Person
-            this.#salary = salary;
-    }
-    computeSalary() {
-            return this.#salary
-    }
-    toString() {
-            return super.toString() + ` salary: ${this.computeSalary()}`
-    }
+// displayPointInSpace.call(point, 10, 20);
+// displayPointInSpace.bind(point, 10, 20)();
+// displayPointInSpace.apply(point, [10, 20]);
+Function.prototype.mybind = function(thisObj, ...args){
+        //this - reference to any functional object
+        //thisObject - link to the binded object
+        return (...params) => {
+                // thisObj.method123456 = this;
+                // const res = thisObj.method123456(...args.concat(params));
+                // delete thisObj.method123456;
+                // return res;
+                return this.call(thisObj, ...args.concat(params));
+        }
 }
-const person2 = new Employee(124, "Sara", 5000);
-console.log(`person2 is ${person2}`)
-console.log(typeof(person2)) // just object
-console.log(person2.constructor.name) // only this way JS allow getting constructor name
-class Child extends Person {
-    #kindergarten
-    constructor(id, name, kindergarten) {
-         super(id, name);
-         this.#kindergarten = kindergarten   
-    }
-    getKindergarten() {
-            return this.#kindergarten;
-    }
-    toString() {
-            return `${super.toString()} kindergarten: ${this.#kindergarten}`
-    }
-}
-const person3 = new Child(125, 'Yakob', 'Shalom');
-console.log(`person3 is ${person3}`)
-
-class WageEmployee extends Employee {
-    #hours
-    #wage
-    constructor(id, name, salary, hours, wage) {
-            super(id, name, salary)
-            this.#hours = hours;
-            this.#wage = wage;
-    }
-    computeSalary() {
-            return super.computeSalary() + this.#hours * this.#wage
-    }
-    
-
-}
-const person4 = new WageEmployee(126, 'Asaf', 1000, 10, 100);
-console.log(`person4 is ${person4}`)
-/**************************************************************HW #17 definition */
-const persons = [
-    new Child(100, 'Olya', 'Shalom'),
-    new Child(101, 'Serega', "Boker"),
-    new Child(102, 'Kolya', 'Shalom'),
-    new Employee(103, 'Vasya', 1000),
-    new WageEmployee(104, 'Tolya', 1000, 10, 100)
-]
-function countOfPersonType(persons, type) {
-    //return count of persons of the given type
-    //Example:
-    //countOfPersonType(persons, 'WageEmployee') ---> 1
-}
-function computeSalaryBudget(persons) {
-    //returns total salary of all employee objects in the given array
-    //Example:
-    //computeSalaryBudget(persons) ---> 3000
-}
-function countChildrenGindergarten(persons, kindergarten) {
-    //returns number of children in the given kindergarten
-    //Example:
-    //countChildrenGindergarten(persons, 'Shalom') ---> 2
-}
+point.method = displayPointInSpace;
+point.method(10,20);
+/***********************arguments are passed at function call */
+const funDisplay = displayPointInSpace.mybind(point);
+funDisplay(10,20); 
+/***********************arguments are bound by the method "bind" */
+const funDisplayArguments = displayPointInSpace.mybind(point, 10, 20);
+funDisplayArguments();
+/***********************mixed - part of arguments are bound by the method "bind" and others are passed as function call */
+const funDisplayMixed = displayPointInSpace.mybind(point, 10);
+funDisplayMixed(20);
