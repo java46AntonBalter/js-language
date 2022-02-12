@@ -1,6 +1,6 @@
 function getRandomNumber(min, max) {
 
-       let res = (min > max)? ([min, max] = [max, min]) && (Math.floor(Math.random() * (max - min + 1) ) + min) : (Math.floor(Math.random() * (max - min + 1) ) + min);  
+       let res = min > max? ([min, max] = [max, min]) && Math.floor(Math.random() * (max - min + 1) ) + min : Math.floor(Math.random() * (max - min + 1) ) + min;  
        return res;
 
 //TODO
@@ -10,7 +10,7 @@ function getRandomNumber(min, max) {
 //if min > max then you should swap values
 //swap should be without additional variable in one line code
 }
-res = getRandomNumber(9, 0);
+res = getRandomNumber(999, 0);
 console.log(res);
 function concatinate(prefix) {
         const res = '' + prefix;
