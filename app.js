@@ -22,7 +22,6 @@ function concatinate(prefix) {
 // console.log(concatMessage);
 // there should be displayed out App - Test status: Done;
 }
-setTimeout(concatinate);
 const concatApp = concatinate('App - ');
 const concatMessage = concatApp('Test status: Done');
 console.log(concatMessage);
